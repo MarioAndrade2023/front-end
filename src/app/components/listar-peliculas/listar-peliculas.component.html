@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">LISTADO DE PELICULAS</span>
+          <div class="btn btn-success float-end" routerLink="/crear-pelicula">NUEVA PELICULA</div>
+          <table *ngIf="listarPeliculas.length > 0" class="table table-striped mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Pelicula</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Director</th>
+                <th scope="col">Año</th>
+                <!--<th scope="col"></th>-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pelicula of listarPeliculas">
+                <td>{{ pelicula.nombre }}</td>
+                <td>{{ pelicula.genero }}</td>
+                <td>{{ pelicula.director }}</td>
+                <td>{{ pelicula.anio }}</td>
+<td>
+  <i (click)="eliminarPelicula(pelicula._id)" class="fas fa-trash-alt text-primary"></i>
+  <i [routerLink]="['/editar-pelicula', pelicula._id]" class="fas fa-pencil-alt text-danger"></i>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <h5 *ngIf="listarPeliculas.length == 0" style="text-align: start; margin-top: 10px;">No hay películas para mostrar</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
